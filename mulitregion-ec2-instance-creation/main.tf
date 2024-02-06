@@ -1,12 +1,14 @@
 resource "aws_instance" "example-nvirginia" {
-    ami = "ami-06aa3f7caf3a30282"
-    instance_type = "t2.micro"
-    key_name = "test_nvirginia"
-    security_groups = [ "test_sg" ]
-    provider=aws.us-east-1
+    ami = var.aws_ec2_ami_nvirigina
+    instance_type = var.aws_ec2_type
+    key_name = var.aws_ec2_key
+    vpc_security_group_ids = var.aws_ec2_sg
+    provider = aws.us-east-1
+    tags = var.aws_resource_name
 }
 resource "aws_instance" "example-ohio" {
-    ami = "ami-07b36ea9852e986ad"
-    instance_type = "t2.micro"
-    provider=aws.us-east-2
+    ami = var.aws_ec2_ami_ohio
+    instance_type = var.aws_ec2_type
+    provider = aws.us-east-2
+    tags = var.aws_resource_name
 }
